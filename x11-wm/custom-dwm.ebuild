@@ -1,19 +1,28 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
 EAPI=7
+inherit savedconfig toolchain-funcs
 
-DESCRIPTION="Custom dwm"
-MY_PV="dwm-custom"
+DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="https://github.com/WetNoodles420/custom-dwm"
-SRC_URI="https://github.com/WetNoodles420/custom-dwm/blob/main/dwm-custom.tar.gz"
+SRC_URI="https://github.com/WetNoodles420/custom-dwm/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="xinerama"
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
+
+RDEPEND="
+	media-libs/fontconfig
+	x11-libs/libX11
+	x11-libs/libXft
+	xinerama? ( x11-libs/libXinerama )
+"
+DEPEND="
+	${RDEPEND}
+	xinerama? ( x11-base/xorg-proto )
+"
 
 src_prepare() {
 	default
@@ -45,4 +54,5 @@ src_install() {
 
 	dodoc README
 
-	save
+	save_config config.h
+}
