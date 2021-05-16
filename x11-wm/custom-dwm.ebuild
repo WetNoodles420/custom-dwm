@@ -6,7 +6,7 @@ inherit savedconfig toolchain-funcs
 
 DESCRIPTION="a dynamic window manager for X11"
 HOMEPAGE="https://github.com/WetNoodles420/custom-dwm"
-SRC_URI="https://github.com/WetNoodles420/custom-dwm/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/WetNoodles420/${PN}/archive/refs/tags/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
